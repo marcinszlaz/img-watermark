@@ -1,11 +1,27 @@
 from PIL import Image, ImageOps
 from pdf2image import convert_from_path
-import os, sys
+import os, sys, pathlib
 import time
+returned_path = r"c:\Dane\new.txt"
+path, filename = os.path.split(returned_path)
+splitted_file = filename.split('.')
+file, ext = splitted_file[0], splitted_file[1]
+print(path, filename, file, ext)
+print(f"{path}\\{file+'_marked.'+ext}")
 
+path_obj = pathlib.Path(returned_path)
+directory = path_obj.parent
+file_ = path_obj.stem
+ext_ = path_obj.suffix
+print(directory, file_, ext_)
 
-ps_file = convert_from_path("watermark.ps")
-print(ps_file)
+# This code works, but it is deprecated and stinky xD
+# path, filename = os.path.split(self.image)
+# spd_filename = filename.split('.')
+# file = spd_filename[0]; ext = '.' + spd_filename[1]
+
+# ps_file = convert_from_path("watermark.ps")
+# print(ps_file)
 # im = Image.open('image.png') # it has .save() function too
 # print(im.size, im.format, im.mode)
 #
